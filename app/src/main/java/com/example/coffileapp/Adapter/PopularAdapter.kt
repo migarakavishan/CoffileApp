@@ -1,10 +1,12 @@
 package com.example.coffileapp.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.coffileapp.Activity.DetailActivity
 import com.example.coffileapp.Domain.ItemsModel
 import com.example.coffileapp.databinding.ViewholderPopularBinding
 
@@ -33,6 +35,10 @@ RecyclerView.Adapter<PopularAdapter.Viewholder>() {
         Glide.with(context).load(items[position].picUrl[0]).into(holder.binding.pic)
 
         holder.itemView.setOnClickListener {
+
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            context.startActivity(intent)
 
         }
     }
